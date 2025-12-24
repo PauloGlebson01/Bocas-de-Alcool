@@ -1,0 +1,499 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #111;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* MENU HAMBURGUER */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* MENU LATERAL */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -260px;
+  width: 260px;
+  height: 100%;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px;
+  transition: 0.3s;
+  z-index: 1001;
+}
+
+.side-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.side-menu.active {
+  right: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    color: #fff;
+  }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #000;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e63946;
+}
+
+.nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+.nav a:hover {
+  color: #e63946;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay escuro */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* Imagem de fundo */
+.hero img.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.7);
+}
+
+/* Conteúdo sobre a imagem */
+.hero h1,
+.hero h2,
+.hero p,
+.hero .btn {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #e63946;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: #d62828;
+}
+
+/* Seções */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #ffd60a;
+}
+section p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+/* Galeria */
+.galeria .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  cursor: pointer;
+}
+.galeria img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  margin-bottom: 10px;
+}
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.9);
+}
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  transition: opacity 0.5s ease;
+  opacity: 1;
+}
+@keyframes zoom {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.close:hover {
+  color: #e63946;
+}
+.caption {
+  margin: 15px auto;
+  text-align: center;
+  color: #ccc;
+  font-size: 1rem;
+}
+
+/* Setas */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -30px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+  transition: 0.3s;
+  user-select: none;
+}
+.prev {
+  left: 10px;
+}
+.next {
+  right: 10px;
+}
+.prev:hover,
+.next:hover {
+  color: #e63946;
+}
+
+.eventos {
+  text-align: center;
+  padding: 20px;
+}
+
+.eventos h2 {
+  color: #ffd60a;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.card {
+  background: #222;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 250px;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card h3 {
+  color: #fff;
+  margin-top: 0;
+}
+
+.card p {
+  margin: 5px 0;
+}
+
+.card button.excluir {
+  margin-top: 10px;
+  background-color: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.card button.excluir:hover {
+  background-color: #b91c1c;
+}
+
+.admin-area {
+  margin-top: 30px;
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.admin-area input {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.admin-area button {
+  background-color: #fff;
+  color: #222;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.admin-area button:hover {
+  background-color: #ffd60a;       /* escurece levemente */
+  transform: scale(1.05);       /* cresce suavemente */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* brilho sutil */
+}
+
+/* Patrocinadores */
+.patrocinadores {
+  overflow: hidden;
+  position: relative;
+  padding: 60px 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.carrossel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 30px;
+}
+
+.carrossel-track {
+  display: flex;
+  /* para o loop infinito, duplicamos os patrocinadores no HTML */
+  animation: scroll 30s linear infinite;
+}
+
+.carrossel-track img {
+  max-width: 150px;
+  margin: 0 40px;
+  flex-shrink: 0;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.carrossel-track img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-2300px); /* desloca exatamente a largura do 1º bloco */
+  }
+}
+
+/* Contato */
+.social a {
+  font-size: 2rem;
+  margin: 10px;
+  color: #fff;
+  transition: color 0.3s;
+}
+.social a:hover {
+  color: #e63946;
+}
+
+/* Footer */
+.footer {
+  background: #000;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* Botão WhatsApp */
+.whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  font-size: 2rem;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+.whatsapp:hover {
+  transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .header {
+    padding: 15px 20px;
+  }
+}
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  section p {
+    font-size: 1rem;
+  }
+  .card {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+@media (max-width: 480px) {
+  .nav {
+    display: none;
+  } /* depois podemos criar menu hamburguer */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
+  }
+}
+
